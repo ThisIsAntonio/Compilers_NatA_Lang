@@ -1,0 +1,20 @@
+package main
+
+import (
+	"fmt"
+	"reflect"
+)
+
+func main () {
+	
+	var var1 string
+	var var2 int
+	var var3 float32
+	var var4 bool
+	var var5 byte
+	fmt.Println("The type of var1 is:", reflect.TypeOf(var1))
+	fmt.Println("The type of var2 is:", reflect.TypeOf(var2))
+	fmt.Println("The type of var3 is:", reflect.TypeOf(var3))
+	fmt.Println("The type of var4 is:", reflect.TypeOf(var4))
+	fmt.Println("The type of var5 is:", reflect.TypeOf(var5))
+} 

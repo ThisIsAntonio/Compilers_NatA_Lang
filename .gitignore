@@ -1,0 +1,41 @@
+# Ignore Visual Studio files
+.vs/
+*.vcxproj
+*.user
+*.suo
+
+# Ignore build output folders
+out/
+build/
+x64/
+Debug/
+Release/
+
+# Ignore other executables and binaries, but keep NatA.exe
+*.exe
+!NatA.exe
+*.dll
+*.pdb
+*.obj
+*.lib
+
+# Ignore CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Ignore log files, temp files, and other system files
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*.sln
+*.idb
+*.opendb
+*.tlog
+
+# Ignore test output files
+*.out
+*.err

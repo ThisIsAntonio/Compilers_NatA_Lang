@@ -1,0 +1,14 @@
+package main
+
+import "fmt"
+
+func volume(l int, w int, h int) int {
+	v := 0
+	v = l * w * h
+	return v;
+}
+
+func main () {
+	v := volume(3, 3, 3)
+	fmt.Println("The volume is:", v, "\n")
+} 

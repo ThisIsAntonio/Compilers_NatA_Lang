@@ -1,0 +1,15 @@
+package main
+
+import "fmt"
+
+func factorial(f int) int {
+	if f <= 0 {
+		return 1
+	}
+	return f * factorial(f-1)
+}
+
+func main () {
+	f := factorial(5)
+	fmt.Println("The factorial of 5 is:", f, "\n")
+} 
