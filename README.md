@@ -7,7 +7,6 @@ NatA Lang is a custom programming language developed as part of the CST8152 Comp
 ## Project Structure
 
 - **input/**: Contains input files used for testing the language features.
-- **out/**: Directory where output files are generated.
 - **Compilers.c/h**: Contains the main logic for the compiler, including the implementation of core functions used across the project.
 - **MainReader.c**: Handles the reading of input files and processing of the source code written in NatA Lang.
 - **MainScanner.c**: Implements the lexical analysis (scanner) for NatA Lang.
@@ -15,12 +14,10 @@ NatA Lang is a custom programming language developed as part of the CST8152 Comp
 - **Scanner.c/h**: Implements the scanner functions, including tokenizing the source code and identifying keywords, identifiers, and literals.
 - **CMakeLists.txt**: Configuration file for building the project using CMake.
 - **CMakePresets.json**: Contains preset configurations for building the project in different environments.
-- **launch.vs.json**: Configuration file for launching the project in Visual Studio.
-- **git_log_image.jpg**: Image representing the Git log history or a related Git operation.
 
 ## Input Files
 
-The `input/` directory contains several `.nat` and `.sof` files used for testing various features of NatA Lang:
+The `input/` directory contains several `.nat` files used for testing various features of NatA Lang:
 
 - **INPUT0_Empty.nat**: A minimal empty file used to test how the compiler handles the absence of content.
 - **INPUT1_Hello.nat**: A basic "Hello, World!" program to validate the basic functionality of output statements in NatA Lang.
@@ -28,7 +25,6 @@ The `input/` directory contains several `.nat` and `.sof` files used for testing
 - **INPUT3_Factorial.nat**: Implements a simple factorial calculation, testing the loop and recursive capabilities of the language.
 - **INPUT4_Datatypes.nat**: Tests the handling and declaration of various data types supported by NatA Lang.
 - **INPUT5_Big.nat**: A larger, more complex program designed to stress-test the compiler's capabilities with a more substantial codebase.
-- **INPUT6_Big.sof**: Similar to `INPUT5_Big.nat` but using the `.sof` file extension, demonstrating compatibility with different input formats.
 
 ## How to Build and Run
 
