@@ -1,45 +1,57 @@
 
-# NatA Lang – Custom Language and Compiler Front-End
+# 🧠 NatA Lang – Educational Compiler Front-End in C
 
-## Project Overview
+## 🌟 Overview
 
-**NatA Lang** is a domain-specific programming language designed and implemented as part of the CST8152 - Compilers course at Algonquin College (Fall 2023). The language and its compiler front-end were developed collaboratively by Marcos Antonio Astudillo C. and David Burchat. The project aims to demonstrate core compiler construction concepts across three main stages: **Reader (Buffer)**, **Scanner (Lexical Analyzer)**, and **Parser (Syntax Analyzer)**.
+**NatA Lang** is a domain-specific programming language and educational compiler developed as part of the CST8152 - Compilers course at Algonquin College (Fall 2023). Created by Marcos Antonio Astudillo Carrasco and David Burchat, this language project is structured to explore the stages of compiler construction:
 
-## Language Overview
+- 🧾 **Reader (Buffer)** – Handles file input and buffering
+- 🧪 **Scanner (Lexical Analyzer)** – Tokenizes source code into meaningful elements
+- 📐 **Parser (Syntax Analyzer)** – Validates structure using BNF-defined grammar
 
-NatA is inspired by the syntax and semantics of Go and C-style languages, targeting readability and minimalism for educational purposes. It includes support for:
-- Variable declarations and arithmetic operations
-- Control flow (`if`, `else`, `while`, `for`)
-- Input/output operations
-- Functions and return types
-- Built-in datatypes like `int`, `float64`, `string`, and `byte`
+---
 
-## File Structure
+## 💡 Language Features
+
+Inspired by Go and C-style languages, **NatA** emphasizes simplicity and educational clarity. Supported constructs include:
+
+- 📦 Variable declarations with types (`int`, `float64`, `string`, `byte`)
+- 🔄 Control structures: `if`, `else`, `for`, `while`
+- 🧮 Arithmetic and logical operations
+- 📤 Output and 📥 input commands
+- 🧩 Functions with parameter and return type support
+
+---
+
+## 🗂️ Project Structure
 
 ```
 NatA_Lang/
 │
-├── input/                  # Sample NatA source files (.nat)
-├── Compilers.c/h          # Main definitions shared across Reader, Scanner, Parser
-├── Reader.c/h             # Reader (buffer) implementation
-├── MainReader.c           # Entry point for Reader testing
-├── Scanner.c/h            # Lexical analyzer
-├── MainScanner.c          # Entry point for Scanner testing
-├── Parser.c/h             # Syntax analyzer
-├── MainParser.c           # Entry point for Parser testing
-├── Runner.bat             # Windows batch file to run test cases
-├── CMakeLists.txt         # Build system configuration
-└── CMakePresets.json      # Preset configurations for CMake
+├── input/                  # Sample .nat files for testing
+├── Compilers.c/h          # Shared definitions
+├── Reader.c/h             # Reader logic
+├── MainReader.c           # Reader test main
+├── Scanner.c/h            # Scanner logic (lexical analyzer)
+├── MainScanner.c          # Scanner test main
+├── Parser.c/h             # Parser logic (syntax analyzer)
+├── MainParser.c           # Parser test main
+├── Runner.bat             # Batch script for compilation/execution
+├── CMakeLists.txt         # CMake configuration
+└── CMakePresets.json      # CMake environment presets
 ```
 
-## How to Build and Run
+---
 
-### Requirements
-- **C Compiler** (GCC or MSVC)
-- **CMake** (3.20 or higher recommended)
-- **Windows (preferred)** or any system supporting standard C
+## ⚙️ Building and Running
 
-### Build Instructions
+### 🔧 Requirements
+
+- 🖥️ **C Compiler** (GCC or MSVC)
+- 🛠️ **CMake** ≥ 3.20
+- 🪟 **Windows (preferred)** or any POSIX-compliant OS
+
+### 🔨 Build Instructions
 
 ```bash
 cd /path/to/NatA_Lang
@@ -47,72 +59,65 @@ cmake -S . -B build
 cmake --build build
 ```
 
-### Running the Compiler
+### 🚀 Run Instructions
 
-1. Copy the `.nat` files from `input/` into the `build` output directory.
-2. Use the included `Runner.bat` script to run the compiler:
-   - Replace `testfile.nat` with your input file name.
-3. The output and errors will be saved in `.out` and `.err` files, respectively.
-
----
-
-## Example Programs
-
-Located in `input/`:
-
-- `INPUT0_Empty.nat`: Empty file test
-- `INPUT1_Hello.nat`: Prints "Hello, World!"
-- `INPUT2_Volume.nat`: Volume of a sphere calculation
-- `INPUT3_Factorial.nat`: Factorial using loops
-- `INPUT4_Datatypes.nat`: Shows supported data types
-- `INPUT5_Big.nat`: Stress test with complex logic
+1. Place `.nat` files in `build/` directory
+2. Run `Runner.bat` or manually run the compiled executable
+3. Check output `.out` and error `.err` files in the same directory
 
 ---
 
-## Project Milestones & Version History
+## 🧪 Sample Programs
 
-### ✅ A11 – Language Proposal and Specification  
-**Commit:** `a11-language-proposal`  
-**Date:** Sep 23, 2023  
-Defined NatA language structure, keywords, syntax rules, and datatypes. Initial `.nat` programs included.
+Available in `input/`:
 
-### ✅ A12 – Reader (Buffer) Implementation  
-**Commit:** `a12-reader-buffer`  
-**Date:** Oct 8, 2023  
-Developed a dynamic memory buffer system (`Reader.c/h`) to process source code files securely using defensive programming.
-
-### ✅ A21 – Lexical Model (RE/Automata)  
-**Commit:** `a21-language-model`  
-**Date:** Oct 22, 2023  
-Created Regular Expressions, Transition Diagrams, and Transition Tables for lexical tokens used in the Scanner.
-
-### ✅ A22 – Scanner (Lexical Analyzer) Implementation  
-**Commit:** `a22-scanner`  
-**Date:** Nov 12, 2023  
-Implemented the `Scanner.c` logic to tokenize source files, classify keywords, literals, identifiers, and output token streams.
-
-### ✅ A31 – Grammar Specification (BNF)  
-**Commit:** `a31-bnf-grammar`  
-**Date:** Nov 26, 2023  
-Defined the full grammar for the NatA language using BNF notation. This grammar forms the base for the parser logic.
-
-### ✅ A32 – Parser (Syntax Analyzer) Implementation  
-**Commit:** `a32-parser`  
-**Date:** Dec 10, 2023  
-Implemented top-down parsing logic for validating NatA syntax, using the BNF from A31 and tokens from the Scanner.
+- `INPUT0_Empty.nat` – Verifies compiler response to an empty file
+- `INPUT1_Hello.nat` – Simple "Hello, World!" output
+- `INPUT2_Volume.nat` – Calculates sphere volume using expressions
+- `INPUT3_Factorial.nat` – Demonstrates recursion and loops
+- `INPUT4_Datatypes.nat` – Validates variable declarations
+- `INPUT5_Big.nat` – Comprehensive stress test of compiler capabilities
 
 ---
 
-## Contributors
+## 📆 Project Milestones & Version History
+
+### ✅ A11 – Language Proposal  
+`a11-language-proposal` – 📅 Sep 23, 2023  
+Initial language specification, keywords, syntax rules, datatypes, and test cases.
+
+### ✅ A12 – Reader (Buffer)  
+`a12-reader-buffer` – 📅 Oct 8, 2023  
+Dynamic memory reader system built to handle secure and efficient file reading.
+
+### ✅ A21 – Lexical Analysis Model  
+`a21-language-model` – 📅 Oct 22, 2023  
+Defined REs, token classes, automata diagrams, and transition tables.
+
+### ✅ A22 – Scanner (Lexer)  
+`a22-scanner` – 📅 Nov 12, 2023  
+Tokenizer for source code, generating token streams and error outputs.
+
+### ✅ A31 – Grammar Specification  
+`a31-bnf-grammar` – 📅 Nov 26, 2023  
+Created BNF rules for the language to support recursive-descent parsing.
+
+### ✅ A32 – Parser Implementation  
+`a32-parser` – 📅 Dec 10, 2023  
+Parser validates syntax and handles structural errors.
+
+---
+
+## 👥 Contributors
 
 - **Marcos Antonio Astudillo Carrasco** – Lead Developer  
 - **David Burchat** – Co-Developer
 
 ---
 
-## License
+## 🧾 License
 
-This project is for academic and educational purposes only. No specific open-source license applies.
+This project is for academic and educational use. No open-source license applies.
 
 ---
 
