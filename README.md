@@ -1,81 +1,125 @@
-# NatA Lang - Custom Language for Compilers Course
+
+# NatA Lang – Custom Language and Compiler Front-End
 
 ## Project Overview
 
-NatA Lang is a custom programming language developed as part of the CST8152 Compilers course at Algonquin College. This language was designed to explore and demonstrate key concepts of compiler construction, including lexical analysis, syntax analysis, and parsing. The project was created in collaboration with [Your Friend's Name].
+**NatA Lang** is a domain-specific programming language designed and implemented as part of the CST8152 - Compilers course at Algonquin College (Fall 2023). The language and its compiler front-end were developed collaboratively by Marcos Antonio Astudillo C. and David Burchat. The project aims to demonstrate core compiler construction concepts across three main stages: **Reader (Buffer)**, **Scanner (Lexical Analyzer)**, and **Parser (Syntax Analyzer)**.
 
-## Project Structure
+## Language Overview
 
-- **input/**: Contains input files used for testing the language features.
-- **Compilers.c/h**: Contains the main logic for the compiler, including the implementation of core functions used across the project.
-- **MainReader.c**: Handles the reading of input files and processing of the source code written in NatA Lang.
-- **MainScanner.c**: Implements the lexical analysis (scanner) for NatA Lang.
-- **Reader.c/h**: Implements utilities for reading and processing input data.
-- **Scanner.c/h**: Implements the scanner functions, including tokenizing the source code and identifying keywords, identifiers, and literals.
-- **CMakeLists.txt**: Configuration file for building the project using CMake.
-- **CMakePresets.json**: Contains preset configurations for building the project in different environments.
+NatA is inspired by the syntax and semantics of Go and C-style languages, targeting readability and minimalism for educational purposes. It includes support for:
+- Variable declarations and arithmetic operations
+- Control flow (`if`, `else`, `while`, `for`)
+- Input/output operations
+- Functions and return types
+- Built-in datatypes like `int`, `float64`, `string`, and `byte`
 
-## Input Files
+## File Structure
 
-The `input/` directory contains several `.nat` files used for testing various features of NatA Lang:
-
-- **INPUT0_Empty.nat**: A minimal empty file used to test how the compiler handles the absence of content.
-- **INPUT1_Hello.nat**: A basic "Hello, World!" program to validate the basic functionality of output statements in NatA Lang.
-- **INPUT2_Volume.nat**: Demonstrates the calculation of the volume of a sphere, showcasing the handling of mathematical expressions.
-- **INPUT3_Factorial.nat**: Implements a simple factorial calculation, testing the loop and recursive capabilities of the language.
-- **INPUT4_Datatypes.nat**: Tests the handling and declaration of various data types supported by NatA Lang.
-- **INPUT5_Big.nat**: A larger, more complex program designed to stress-test the compiler's capabilities with a more substantial codebase.
+```
+NatA_Lang/
+│
+├── input/                  # Sample NatA source files (.nat)
+├── Compilers.c/h          # Main definitions shared across Reader, Scanner, Parser
+├── Reader.c/h             # Reader (buffer) implementation
+├── MainReader.c           # Entry point for Reader testing
+├── Scanner.c/h            # Lexical analyzer
+├── MainScanner.c          # Entry point for Scanner testing
+├── Parser.c/h             # Syntax analyzer
+├── MainParser.c           # Entry point for Parser testing
+├── Runner.bat             # Windows batch file to run test cases
+├── CMakeLists.txt         # Build system configuration
+└── CMakePresets.json      # Preset configurations for CMake
+```
 
 ## How to Build and Run
 
-### Prerequisites
+### Requirements
+- **C Compiler** (GCC or MSVC)
+- **CMake** (3.20 or higher recommended)
+- **Windows (preferred)** or any system supporting standard C
 
-- **C Compiler**: Ensure you have a C compiler installed, such as GCC or Clang.
-- **CMake**: Required to build the project using the provided CMake configuration file.
+### Build Instructions
 
-### Building the Project
+```bash
+cd /path/to/NatA_Lang
+cmake -S . -B build
+cmake --build build
+```
 
-1. **Navigate to the project directory**:
-   cd /path/to/NatA_Lang
-2. **Generate the build files using CMake**:
-   cmake -S . -B build
-3. **Build the project**:
-   cmake --build build
-4. **The executable will be generated in the build directory.**
+### Running the Compiler
 
-## Running the Compiler
+1. Copy the `.nat` files from `input/` into the `build` output directory.
+2. Use the included `Runner.bat` script to run the compiler:
+   - Replace `testfile.nat` with your input file name.
+3. The output and errors will be saved in `.out` and `.err` files, respectively.
 
-After building the project, you can run the compiler by executing the generated binary. Follow these steps to ensure everything is set up correctly:
-
-1. **Run the executable**:
-   - Ensure that all necessary files and folders are in place. Copy and paste the following folders and files into the directory `./out/build/x64-debug/`:
-     - The `input/` folder containing your test files.
-     - The executable file (`NatA.exe`) generated by Visual Studio or included for testing purposes.
-
-2. **Update the Runner.bat file**:
-   - Inside the `Runner.bat` file, replace the placeholder `testfile.nat` with the name of the actual `.nat` file you want to compile and run.
-
-   **Note:** For now, the project includes a precompiled `NatA.exe` executable for testing. You can use this executable without needing to rebuild the project.
-
-3. **Execute the Runner.bat file**:
-   - Run `Runner.bat` to execute the NatA compiler. This will process the `.nat` file specified within the batch file.
-
-4. **Output**:
-   - The results of the compilation (or any errors) will be shown in a new `.err` file, and any output files (`.out`) will be saved in the `out/` directory.
-
+---
 
 ## Example Programs
-Example programs written in NatA Lang are located in the input/ directory. These include:
 
-INPUT1_Hello.nat: A simple "Hello, World!" program.
-INPUT2_Volume.nat: Demonstrates arithmetic operations.
+Located in `input/`:
+
+- `INPUT0_Empty.nat`: Empty file test
+- `INPUT1_Hello.nat`: Prints "Hello, World!"
+- `INPUT2_Volume.nat`: Volume of a sphere calculation
+- `INPUT3_Factorial.nat`: Factorial using loops
+- `INPUT4_Datatypes.nat`: Shows supported data types
+- `INPUT5_Big.nat`: Stress test with complex logic
+
+---
+
+## Project Milestones & Version History
+
+### ✅ A11 – Language Proposal and Specification  
+**Commit:** `a11-language-proposal`  
+**Date:** Sep 23, 2023  
+Defined NatA language structure, keywords, syntax rules, and datatypes. Initial `.nat` programs included.
+
+### ✅ A12 – Reader (Buffer) Implementation  
+**Commit:** `a12-reader-buffer`  
+**Date:** Oct 8, 2023  
+Developed a dynamic memory buffer system (`Reader.c/h`) to process source code files securely using defensive programming.
+
+### ✅ A21 – Lexical Model (RE/Automata)  
+**Commit:** `a21-language-model`  
+**Date:** Oct 22, 2023  
+Created Regular Expressions, Transition Diagrams, and Transition Tables for lexical tokens used in the Scanner.
+
+### ✅ A22 – Scanner (Lexical Analyzer) Implementation  
+**Commit:** `a22-scanner`  
+**Date:** Nov 12, 2023  
+Implemented the `Scanner.c` logic to tokenize source files, classify keywords, literals, identifiers, and output token streams.
+
+### ✅ A31 – Grammar Specification (BNF)  
+**Commit:** `a31-bnf-grammar`  
+**Date:** Nov 26, 2023  
+Defined the full grammar for the NatA language using BNF notation. This grammar forms the base for the parser logic.
+
+### ✅ A32 – Parser (Syntax Analyzer) Implementation  
+**Commit:** `a32-parser`  
+**Date:** Dec 10, 2023  
+Implemented top-down parsing logic for validating NatA syntax, using the BNF from A31 and tokens from the Scanner.
+
+---
 
 ## Contributors
-- Marcos Antonio Astudillo C. - Lead Developer
-- David Burchat - Co-Developer
+
+- **Marcos Antonio Astudillo Carrasco** – Lead Developer  
+- **David Burchat** – Co-Developer
+
+---
 
 ## License
-This project is for educational purposes and does not have a specific license.
 
-## Contact
-For any inquiries or contributions, please contact [Your Email Address].
+This project is for academic and educational purposes only. No specific open-source license applies.
+
+---
+
+## 📫 Connect With Me
+
+[![🌍 Portfolio](https://img.shields.io/badge/Website-marcosastudillo.com-blueviolet?style=for-the-badge&logo=google-chrome)](https://www.marcosastudillo.com)
+[![💼 LinkedIn](https://img.shields.io/badge/LinkedIn-Marcos%20Astudillo-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/marcos-antonio-astudillo-carrasco)
+[![🐱 GitHub](https://img.shields.io/badge/GitHub-ThisIsAntonio-181717?style=for-the-badge&logo=github)](https://github.com/ThisIsAntonio)
+
+**Email:** m.astudillo1986@gmail.com
